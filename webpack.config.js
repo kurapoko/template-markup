@@ -1,3 +1,6 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path');
+
 module.exports = {
     mode: 'production',
     entry: './src/js/index.js',
@@ -10,7 +13,6 @@ module.exports = {
     module: {
         rules: [
             {
-                // .js
                 test: /\.js$/,
                 use: [
                     {
@@ -25,6 +27,17 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                { 
+                    from: path.resolve(__dirname, 'src/images'),
+                    to: path.resolve(__dirname, 'dist/assets/images')
+                }
+            ],
+        }),
+    ],
+
     // ES5(IE11等)向けの指定
     target: ["web", "es5"],
 };
