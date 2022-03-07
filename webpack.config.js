@@ -1,5 +1,6 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
 module.exports = {
@@ -7,9 +8,9 @@ module.exports = {
   entry: './src/js/index.js',
   // ファイルの出力設定
   output: {
-    path: `${__dirname}/dist/assets/js`,
+    path: path.resolve(__dirname, 'dist'),
     // 出力ファイル名
-    filename: 'script.js'
+    filename: 'assets/js/script.js'
   },
   module: {
     rules: [
@@ -25,7 +26,11 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', 'glob-import-loader'],
+      },
     ]
   },
   // ES5(IE11等)向けの指定
@@ -71,6 +76,9 @@ module.exports = {
           to: path.resolve(__dirname, 'dist/assets/images')
         }
       ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: './assets/css/style.css',
     }),
   ],
 };

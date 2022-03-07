@@ -1,0 +1,32 @@
+// ********************************************************************************************
+//
+// style.scss
+//
+// ********************************************************************************************
+@charset "utf-8";
+
+// Foundation
+// -------------------------------------------------------------------
+@import "foundation/reset.scss";
+@import "foundation/color.scss";
+@import "foundation/variables.scss";
+@import "foundation/mediaqueries.scss";
+@import "foundation/base.scss";
+@import "foundation/mixin.scss";
+@import "foundation/font.scss";
+
+// Layout
+// -------------------------------------------------------------------
+@import "layout/**/*.scss";
+
+// object
+// -------------------------------------------------------------------
+
+// object/component
+@import "object/component/**/*.scss";
+
+// object/project
+@import "object/project/**/*.scss";
+
+// object/utility
+@import "object/utility/**/*.scss";
