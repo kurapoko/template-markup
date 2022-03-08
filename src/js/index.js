@@ -8,6 +8,7 @@ import '../scss/style.scss';
 
 const result = add(1, 2);
 console.log(result);
+console.log('bbb');
 
 // $('body').append(result);
 

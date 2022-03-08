@@ -6,6 +6,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
+  watch: true,
   entry: './src/js/index.js',
   // ファイルの出力設定
   output: {
@@ -38,7 +39,7 @@ module.exports = {
           {
             loader: "html-loader",
             options: {
-              minimize: false, // 追加
+              minimize: false,
             },
           },
           {
@@ -93,17 +94,19 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: './assets/css/style.css',
+      filename: 'assets/css/style.css',
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/html/index.ejs',
       minify: false,
+      inject: 'body'
     }),
     new HtmlWebpackPlugin({
       filename: 'sample/index.html',
       template: './src/html/sample/index.ejs',
       minify: false,
+      inject: 'body'
     }),
   ],
 };
