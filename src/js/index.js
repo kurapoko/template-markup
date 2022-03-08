@@ -1,9 +1,16 @@
-import jQuery from "jquery";
+// import $ from "jquery";
+import Swiper from 'swiper';
+import { add } from './modules/math';
+
+import 'swiper/css';
 import '../scss/style.scss';
 
 
+const result = add(1, 2);
+console.log(result);
 
-console.log('aaa');
+// $('body').append(result);
 
-const A = 'aaa';
-console.log(A);
+const swiper = new Swiper('.swiper', {
+
+});
