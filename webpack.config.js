@@ -6,8 +6,15 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  watch: true,
   entry: './src/js/index.js',
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 3000,
+    open: true
+  },
   // ファイルの出力設定
   output: {
     path: path.resolve(__dirname, 'dist'),
