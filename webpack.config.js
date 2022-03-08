@@ -1,6 +1,7 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -30,6 +31,20 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', 'glob-import-loader'],
+      },
+      {
+        test: /\.ejs$/i,
+        use: [
+          {
+            loader: "html-loader",
+            options: {
+              minimize: false, // 追加
+            },
+          },
+          {
+            loader: 'template-ejs-loader'
+          }
+        ],
       },
     ]
   },
@@ -79,6 +94,16 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: './assets/css/style.css',
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './src/html/index.ejs',
+      minify: false,
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'sample/index.html',
+      template: './src/html/sample/index.ejs',
+      minify: false,
     }),
   ],
 };
